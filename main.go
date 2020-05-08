@@ -93,6 +93,9 @@ func readUrls(input string) []string {
 	return arr
 }
 
+/*
+ * Проверка на то, что строка валидный url
+ */
 func isValidUrl(urlString string) bool {
 	_, err := url.ParseRequestURI(urlString)
 	if err != nil {
@@ -107,6 +110,9 @@ func isValidUrl(urlString string) bool {
 	return true
 }
 
+/*
+ * Функция для создание новой горутины
+ */
 func initNewRequest(channel chan *structs.Request, urlString string) {
 	request := structs.NewRequest(urlString)
 
