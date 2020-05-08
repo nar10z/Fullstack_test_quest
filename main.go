@@ -31,6 +31,11 @@ func main() {
 		splitStrings := readUrls(text)
 		countUrls := len(splitStrings)
 
+		if countUrls <= 0 {
+			fmt.Print("No url found")
+			continue
+		}
+
 		go func(q chan int, arr []string) {
 			for {
 				if countUrls <= 0 {
@@ -67,6 +72,9 @@ func main() {
 	}
 }
 
+/*
+ * Чтение введенного текста, и разбор его на url
+ */
 func readUrls(input string) []string {
 	readString := strings.ReplaceAll(input, "\r", "")
 	splitStrings := strings.Split(readString, "\\n")
@@ -111,8 +119,3 @@ func initNewRequest(channel chan *structs.Request, urlString string) {
 
 	channel <- request
 }
-
-// https://yourbasic.org/golang/split-string-into-slice/
-// https://yourbasic.org/golang/split-string-into-slice/ \n https://www.google.com/search?q=explode+string+golang&oq=explode+string+golang&aqs=chrome..69i57j0l3.4639j1j7&sourceid=chrome&ie=UTF-8
-// https://yourbasic.org/golang/split-string-into-slice/ \n https://www.google.com/search?q=explode+string+golang&oq=explode+string+golang&aqs=chrome..69i57j0l3.4639j1j7&sourceid=chrome&ie=UTF-8 \n https://golangcode.com/how-to-check-if-a-string-is-a-url/
-// https://yourbasic.org/golang/split-string-into-slice/ \n https://www.google.com/search?q=explode+string+golang&oq=explode+string+golang&aqs=chrome..69i57j0l3.4639j1j7&sourceid=chrome&ie=UTF-8 \n https://golangcode.com/how-to-check-if-a-string-is-a-url/ \n https://tour.golang.org/concurrency/6 \n https://golangbot.com/goroutines/ \n https://stackoverflow.com/questions/29898400/import-struct-from-another-package-and-file-golang
