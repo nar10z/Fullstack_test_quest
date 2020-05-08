@@ -1,3 +1,7 @@
+/*
+ * @author Nikita Terentyev (nekit.nar10z@gmail.com)
+ */
+
 package main
 
 import (
